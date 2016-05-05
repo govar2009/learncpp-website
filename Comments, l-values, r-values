@@ -1,0 +1,69 @@
+Write comments as specified below:
+
+At the library, program, or function level, describe what
+Inside the library, program, or function, describe how
+At the statement level, describe why.
+
+*****************************************************************************************************************************************
+
+l-values and r-values:
+
+In C++, variables are a type of l-value (pronounced ell-value). An l-value is a value that has an address (in memory). Since all variables
+have addresses, all variables are l-values. The name l-value came about because l-values are the only values that can be on the left side 
+of an assignment statement. When we do an assignment, the left hand side of the assignment operator must be an l-value. Consequently, a 
+statement like 5 = 6; will cause a compile error, because 5 is not an l-value. The value of 5 has no memory, and thus nothing can be 
+assigned to it. 5 means 5, and its value can not be reassigned. When an l-value has a value assigned to it, the current value at that 
+memory address is overwritten.
+
+The opposite of l-values are r-values (pronounced arr-values). An r-value refers to any value that can be assigned to an l-value. 
+r-values are always evaluated to produce a single value. Examples of r-values are single numbers (such as 5, which evaluates to 5), 
+variables (such as x, which evaluates to whatever value was last assigned to it), or expressions (such as 2 + x, which evaluates to the 
+value of x plus 2).
+
+*****************************************************************************************************************************************
+
+Parameter, Argument:
+
+A function parameter is a variable used in a function where the value is provided by the caller of the function. Function parameters 
+are placed in between the parenthesis after the function identifier, with multiple parameters being separated by commas.
+EX:
+// This function takes one integer parameter named x
+// The caller will supply the value of x
+void printValue(int x)
+{
+    std::cout << x  << std::endl;
+}
+
+
+An argument is a value that is passed from the caller to the function when a function call is made:
+Ex:
+printValue(6); // 6 is the argument passed to function printValue()
+
+***************************************************************************************************************************************
+
+Functions:
+
+Why use functions?
+
+Organization -- As programs grow in complexity, having all the code live inside the main() function becomes increasingly complicated.
+A function is almost like a mini-program that we can write separately from the main program, without having to think about the rest of 
+the program while we write it. This allows us to divide complicated tasks into smaller, simpler ones, and drastically reduces the 
+overall complexity of our program.
+
+Reusability -- Once a function is written, it can be called multiple times from within the program. This avoids duplicated code and 
+minimizes the probability of copy/paste errors. Functions can also be shared with other programs, reducing the amount of code that has
+to be written from scratch (and retested) each time.
+
+Testing -- Because functions reduce code redundancy, there’s less code to test in the first place. Also because functions are 
+self-contained, once we’ve tested a function to ensure it works, we don’t need to test it again unless we change it. This reduces the 
+amount of code we have to test at one time, making it much easier to find bugs (or avoid them in the first place).
+
+Extensibility -- When we need to extend our program to handle a case it didn’t handle before, functions allow us to make the change 
+in one place and have that change take effect every time the function is called.
+
+Abstraction -- In order to use a function, you only need to know its name, inputs, outputs, and where it lives. You don’t need to 
+know how it works, or what other code it’s dependent upon to use it. This is super-useful for making other people’s code accessible
+(such as everything in the standard library).
+
+***************************************************************************************************************************************
+
