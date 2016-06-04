@@ -1,0 +1,58 @@
+2.1: 
+Variable initialization
+When a variable is defined, you can immediately give that variable a value. This is called variable initialization 
+(or initialization for short).
+
+C++ supports two basic ways to initialize a variable. First, we can do copy initialization by using an equals sign:
+int nValue = 5; // copy initialization
+Note that the equals sign here is just part of the syntax, and is not the same equals sign used to assign a value once the variable 
+has been created.
+
+Second, we can do a direct initialization by using parenthesis.
+int nValue(5); // direct initialization
+Even though direct initialization form looks a lot like a function call, the compiler keeps track of which names are variables and 
+which are functions so that they can be resolved properly.
+
+Direct initialization can perform better than copy initialization for some data types, and comes with some other benefits once we 
+start talking about classes. It also helps differentiate initialization from assignment. Consequently, we recommend using direct 
+initialization over copy initialization.
+
+Rule: Favor direct initialization over copy initialization
+
+Uniform initialization in C++11:
+Because C++ grew organically, the copy initialization and direct initialization forms only work for some types of variables
+(for example, you can’t use either of these forms to initialize a list of values).
+In an attempt to provide a single initialization mechanism that will work with all data types, C++11 adds a new form of initialization 
+called uniform initialization:
+int value{5};
+
+Initializing a variable with an empty brace indicates default initialization. Default initialization initializes the variable to 
+zero (or empty, if that’s more appropriate for a given type).
+int value{}; // default initialization to 0
+
+Uniform initialization has the added benefit of disallowing “narrowing” type conversions. This means that if you try to use uniform 
+initialization to initialize a variable with a value it can not safely hold, the compiler will throw an warning or error.
+int value{4.5}; // error: an integer variable can not hold a non-integer value
+
+Because void means no type, note that you can not declare variables of type void:
+void myVariable; // compiler error!
+
+2.3:
+Interestingly, the sizeof operator is one of only three operators in C++ that are a word instead of a symbol. 
+The other two are new and delete.
+
+2.4: Integers
+short int si; // valid
+short s;
+both s and si are same.
+
+Overflow examples
+
+Consider a hypothetical unsigned variable that can only hold 4 bits. Any of the binary numbers enumerated in the table above would 
+fit comfortably inside this variable (because none of them are larger than 4 bits).
+
+But what happens if we try to assign a value that takes more than 4 bits to our variable? We get overflow: our variable will only 
+store the 4 least significant (rightmost) bits, and the excess bits are lost.
+Ex: 21 takes 5 bits (10101) to represent. The 4 rightmost bits (0101) go into the variable, and the leftmost (1) is simply lost. 
+Our variable now holds 0101, which is the decimal value 5.
+
